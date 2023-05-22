@@ -6,6 +6,18 @@ module.exports.getAllTodos = (req, res) => {
     .catch((err) => console.log(err));
 };
 
+module.exports.getActiveTodos = (req, res) => {
+  Todo.find({ completed: false })
+    .then((todo) => res.json(todo))
+    .catch((err) => console.log(err));
+};
+
+module.exports.getCompletedTodos = (req, res) => {
+  Todo.find({ completed: true })
+    .then((todo) => res.json(todo))
+    .catch((err) => console.log(err));
+};
+
 module.exports.addTodo = (req, res) => {
   Todo.create(req.body)
     .then((data) => res.json({ message: "Todo added successfully", data }))
