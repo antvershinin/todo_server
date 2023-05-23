@@ -1,28 +1,22 @@
 const Todo = require("../models/models");
 
-module.exports.getAllTodos = (req, res) => {
-  console.log(req.query);
-  Todo.find({})
-    .then((todo) => res.json(todo))
-    .catch((err) => console.log(err));
+module.exports.getAllTodos = async (req, res) => {
+  try {
+    const todos = await Todo.find({});
+    res.send(todos);
+  } catch (err) {
+    console.log(err);
+  }
 };
 
-module.exports.getActiveTodos = (req, res) => {
-  Todo.find({ completed: false })
-    .then((todo) => res.json(todo))
-    .catch((err) => console.log(err));
-};
-
-module.exports.getCompletedTodos = (req, res) => {
-  Todo.find({ completed: true })
-    .then((todo) => res.json(todo))
-    .catch((err) => console.log(err));
-};
-
-module.exports.addTodo = (req, res) => {
-  Todo.create(req.body)
-    .then((data) => res.json({ message: "Todo added successfully", data }))
-    .catch((err) => console.log(err));
+module.exports.addTodo = async (req, res) => {
+  try {
+    const newTodo = await Todo.create({ text: "олоо" });
+    console.log(req.data);
+    res.sendStatus(200);
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 module.exports.updateTodo = (req, res) => {

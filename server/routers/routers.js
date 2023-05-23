@@ -3,8 +3,7 @@ const router = express.Router();
 
 const {
   getAllTodos,
-  getActiveTodos,
-  getCompletedTodos,
+
   addTodo,
   updateTodo,
   deleteTodo,
@@ -14,10 +13,6 @@ const {
 } = require("../controllers/controllers");
 
 router.get("/todos", getAllTodos);
-
-router.get("/todos/Active", getActiveTodos);
-
-router.get("/todos/Completed", getCompletedTodos);
 
 router.post("/", addTodo);
 
