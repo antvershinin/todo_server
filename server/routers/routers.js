@@ -13,7 +13,7 @@ const {
   deleteAll,
 } = require("../controllers/controllers");
 
-router.get("/todos/All", getAllTodos);
+router.get("/todos", getAllTodos);
 
 router.get("/todos/Active", getActiveTodos);
 

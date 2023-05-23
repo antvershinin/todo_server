@@ -1,6 +1,7 @@
 const Todo = require("../models/models");
 
 module.exports.getAllTodos = (req, res) => {
+  console.log(req.query);
   Todo.find({})
     .then((todo) => res.json(todo))
     .catch((err) => console.log(err));
