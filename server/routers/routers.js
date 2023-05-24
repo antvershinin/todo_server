@@ -3,27 +3,23 @@ const router = express.Router();
 
 const {
   getAllTodos,
-
   addTodo,
-  updateTodo,
   deleteTodo,
-  completeTodo,
   completeAll,
   deleteAll,
+  editTodo,
 } = require("../controllers/controllers");
 
 router.get("/todos", getAllTodos);
 
 router.post("/", addTodo);
 
-router.put("/:id", updateTodo);
+router.delete("/", deleteTodo);
 
-router.delete("/:id", deleteTodo);
+router.put("/completeAll", completeAll);
 
-router.put("/:id", completeTodo);
+router.delete("/deleteAll", deleteAll);
 
-router.put("/", completeAll);
-
-router.delete("/", deleteAll);
+router.patch("/:_id", editTodo);
 
 module.exports = router;
