@@ -9,8 +9,8 @@ const routes = require("./routers/routers");
 connectDB();
 app.use(cors({ origin: true, credentials: true }));
 app.use(express.json({ extended: false }));
+app.use("/todos", routes);
 app.get("/", (req, res) => res.send("Server running"));
-app.use(routes);
 
 const PORT = process.env.PORT || 8000;
 

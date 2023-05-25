@@ -27,8 +27,7 @@ module.exports.addTodo = async (req, res) => {
   try {
     const { text } = req.body.data;
     const newTodo = await Todo.create({ text });
-    res.send(newTodo);
-    if (newTodo) res.sendStatus(200);
+    return res.json(newTodo);
   } catch (err) {
     console.log(err);
   }
@@ -38,16 +37,18 @@ module.exports.deleteTodo = async (req, res) => {
   try {
     const { _id } = req.body;
     const todo = await Todo.findByIdAndDelete(_id);
-    if (todo) res.sendStatus(200);
+    if (todo) {
+      res.sendStatus(200);
+    }
   } catch (err) {
-    res.sendStatus(500);
+    res.json({ message: "xxx" }).sendStatus(403);
     console.log(err);
   }
 };
 
 module.exports.editTodo = async (req, res) => {
   try {
-    const todo = await Todo.findByIdAndUpdate(req.params._id, req.body, {
+    const todo = await Todo.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
     });
 

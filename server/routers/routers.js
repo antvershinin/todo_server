@@ -10,7 +10,7 @@ const {
   editTodo,
 } = require("../controllers/controllers");
 
-router.get("/todos", getAllTodos);
+router.get("/", getAllTodos);
 
 router.post("/", addTodo);
 
@@ -20,6 +20,6 @@ router.put("/completeAll", completeAll);
 
 router.delete("/deleteAll", deleteAll);
 
-router.patch("/:_id", editTodo);
+router.patch("/:id", editTodo);
 
 module.exports = router;
